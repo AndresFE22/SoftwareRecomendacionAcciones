@@ -1,0 +1,150 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, Sans-serif;
+  color: white;
+  background-image: url("images/fondo1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+   
+  
+  
+  }
+  
+  select {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    appearance:none;
+    outline:0;
+    box-shadow:none;
+    border:0!important;
+    background: #5c6664;
+    background-image: none;
+    flex: 1;
+    padding: 0 .5em;
+    color:#fff;
+    cursor:pointer;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    
+  }
+  select::-ms-expand {
+    display: none;
+    }
+    .text {
+        color: rgb(29, 29, 29);
+        font-size: large;
+        font-weight: bold;
+
+}
+    
+    .caja h1 {
+      text-align: center;
+    } 
+
+    
+    
+    .caja {
+       
+       
+        background-color: #fff;
+        width: 80%;
+        border-radius: 10px;
+        box-shadow: -8px 10px 15px #79867d;
+        margin: 10%;
+        padding: 100px;
+        border: 20px solid #50c03a
+
+    }
+    .select {
+      position: relative;
+     
+      
+      width: 20em;
+      height: 3em;
+      line-height: 3;
+      background: #bebebe8f;
+      overflow: hidden;
+      border-radius: .25em;
+      padding-top: 0px;
+      opacity: 1;
+      font-weight: bold;
+      transition: all .5s ease;
+      
+      color: #858484;
+      
+      
+
+      }
+      
+      .select .option {
+        color: black;
+      }
+        
+      
+      .sumbit {
+        background: linear-gradient(0deg, rgba(0,117,53,1) 0%, rgba(0,197,41,1) 100%);
+
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  
+      }
+
+      .boton {
+        border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+
+      }
+      .sumbit:hover {
+        transform: scale(1.1);
+        transition: all 1s 0s ease;
+        background: linear-gradient(270deg, rgba(0,117,53,1) 0%, rgba(0,197,41,1) 100%);
+      }
+
+     
+  
+   .select:hover::after {
+      color: #23b499;
+   }
+  
+   .title1{
+    position: relative;
+   }
+
+   .caja .tit {
+    padding: 0%;
+    height: 100%;
+    width: 100%;
+
+   } 
+   

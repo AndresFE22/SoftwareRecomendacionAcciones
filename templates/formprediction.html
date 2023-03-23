@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
+         <link rel="stylesheet" href="/static/style3.css" media="screen">
+        <title>Prediction input form</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    </head>
+<body>
+    
+  <div class="caja">
+    <div class="tit"><h1>Perfil del estudiante</h1></div> 
+    <br>
+   <form action = "http://localhost:5000/doprediction" method = "post" >
+    
+    <div class="container text-center">
+        <div class="row align-items-start">
+          <div class="col">
+            <p>
+                <h4><label for="iescuela" class="text">¿Cuál es la principal razón por la que no va a clases?</label>
+                </h4>
+                <br>
+                    <select name="iescuela" id="iescuela" class="select" required>
+                        <option selected disabled></option>
+                <option value="0">Por irme de viaje</option>
+                <option value="1">Cambio de domicilio</option>
+                <option value="2">Por el trabajo</option>
+                <option value="3">Me expulsaron/suspendieron</option>
+                <option value="4">Problemas familiares</option>
+                <option value="5">Problemas de salud</option>
+                                            
+                </select>
+                
+              
+            </p>
+          </div>
+          <div class="col">
+            <p>
+                
+                <h4> <label for="trabajar" class="text">¿Se encuentra usted trabajando en la actualidad?</label>
+                </h4>
+                <br>
+                
+
+                <select name="trabajar" id="trabajar" class="select" required>
+                    <option selected disabled></option>
+                <option value="0">Si</option>
+                <option value="1">No</option>
+                </select>
+            </p>
+          </div>
+          <div class="col">
+            <p>
+                <h4>
+                <label for="vision" class="text">¿Cuáles son sus expectativas para este año?</label>
+            </h4>
+            <br>
+
+                <select name= "vision" id="vision" class="select" required>
+                    <option selected disabled></option>
+                <option value="0">Sólo seguir estudiando</option>
+                <option value="1">Seguir estudiando y continuar trabajando</option>
+                <option value="2">Seguir estudiando y dejar de trabajar</option>
+                <option value="3">Seguir estudiando y buscar un trabajo</option>
+                <option value="4">Dejar de estudiar y dedicarme a trabajar</option>
+                </select> 
+            </p>          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col">
+            <p>
+                <h4> 
+                    
+
+                <label for="gastotra" class="text">¿Cuánto gastas en transporte diario a las escuela?</label>
+            </h4>
+            <br>
+
+                <select name="gastotra" id="gastotra" class="select" required>
+                    <option selected disabled></option>
+                <option value="0">Menos o igual $6000</option>
+                <option value="1">Más de $6000</option>
+                </select>
+            </p>    </div>
+          <div class="col">
+            <p> 
+                <h4> 
+                    
+                <label for="tiempoce" class="text">¿Cuánto tiempo inviertes en llegar de tu casa a la escuela?</label>
+            </h4>
+            <br>
+
+                <select name="tiempoce" id="tiempoce" class="select" required>
+                    <option selected disabled></option>
+                <option value="0">Menos o igual a 10 min</option>
+                <option value="1">Entre 11 a 30 min</option>
+                <option value="2">Mas de 30 min</option>
+            </select>
+            </p>          </div>
+          <div class="col">
+            <p> <h4> 
+                <label for="becaestu" class="text">¿Recibes alguna beca para apoyar tus estudios?   </label>
+            </h4>
+            <br>
+
+                <select name="becaestu" id="becaestu" class="select" required>
+                    <option selected disabled></option>
+                <option value="0">Si</option>
+                <option value="1">No</option>
+                </select>
+            </p>          </div>
+        </div>
+        <div class="row align-items-end">
+          <div class="col">
+            <p> <h4> 
+                <label for="califrec" class="text">Tus calificaciones mas frecuentes en tus estudios son:</label>
+            </h4>
+            <br>
+
+                <select name="califrec" id="califrec" class="select" required>
+                    <option selected disabled></option>
+                <option value="0">Altas</option>
+                <option value="1">Medias</option>
+                <option value="2">Bajas</option>
+            </select>
+            </p>          </div>
+          <div class="col">
+            <p> <h4> 
+                
+                <label for="pisocasa" class="text">¿De que material es el piso de tu casa?</label>
+            </h4>
+            <br>
+
+                <select name="pisocasa" id="pisocasa" class="select" required>
+                    <option selected disabled></option>
+                <option value="0">Tierra</option>
+                <option value="1">Cemento</option>
+                <option value="2">Mosaico, madera u otro recubrimiento</option>
+            </select>
+            </p>          </div>
+          <div class="col">
+            <p> <h4> 
+                <label for="aguaserv" class="text">¿Cuentas con servicio de agua?</label>
+            </h4>
+            <br>
+
+                <select name="aguaserv" id="aguaserv" class="select" required>
+                    <option selected disabled></option>
+                <option value="0">Si</option>
+                <option value="1">No</option>
+              
+            </select>
+            </p>          </div>
+            <div class="container text-center">
+                <div class="row align-items-start">
+                  <div class="col">
+                    <p> <h4> 
+                        <label for="luzelect" class="text">¿Tienes servicio de luz eléctrica?</label>
+                    </h4>
+                    <br>
+
+                        <select name="luzelect" id="luzelect" class="select" required>
+                            <option selected disabled></option>
+                        <option value="0">Si</option>
+                        <option value="1">No</option>
+                      
+                    </select>
+                    </p>                  </div>
+                  <div class="col">
+                    <p> <h4> 
+                        <label for="internet" class="text">¿Cuentas con conexión a internet?</label>
+                    </h4>
+                    <br>
+
+                        <select name="internet" id="internet" class="select" required>
+                            <option selected disabled></option>
+                        <option value="0">Si</option>
+                        <option value="1">No</option>
+                      
+                    </select>
+                    </p>                  </div>
+                  <div class="col">
+                    <p> <h4> 
+                        <label for="vivencas" class="text">¿Cuántas personas viven en tu casa?</label>
+                    </h4>
+                    <br>
+                        <select name="vivencas" id="vivencas" class="select" required>
+                            <option selected disabled></option>
+                        <option value="0">Menos o igual a 4</option>
+                        <option value="1">Entre 5 a 10</option>
+                        <option value="2">Mas de 10</option>
+                    </select>
+                    </p>                  </div>
+                </div>
+                <div class="row align-items-center">
+                  <div class="col">
+                    <p> <h4> 
+                        <label for="trabajop" class="text">¿Tus padres trabajan?</label>
+                    </h4>
+                    <br>
+
+                        <select name="trabajop" id="trabajop" class="select" required>
+                            <option selected disabled></option>
+                        <option value="0">Si</option>
+                        <option value="1">No</option>
+                      
+                    </select>
+                    </p>                  </div>
+                  <div class="col">
+                    <p> <h4> 
+                        <label for="vivescon" class="text">¿Con quién vives? (Puedes elegir mas de una opción)</label>
+                    </h4>
+                    <br>
+
+                        <select name="vivescon" id="vivescon" class="select" required>
+                            <option selected disabled></option>
+                        <option value="0">Padre</option>
+                        <option value="1">Madre</option>
+                        <option value="2">Hermanos(as)</option>
+                        <option value="3">Otros familiares</option>
+                        <option value="4">Otras personas que no son familiares</option>
+                        <option value="5">Solo(a)</option>
+                        <option value="6">Con amigos</option>
+                    </select>
+                    </p>                  </div>
+                  <div class="col">
+                    <p> <h4> 
+
+    
+                        <label for="escojefe" class="text">¿Cuál es la escolaridad máxima del jefe del hogar?</label>
+                    </h4>   
+                    <br>
+
+                        <select name="escojefe" id="escojefe" class="select" required>
+                            <option selected disabled></option>
+                            <option value="0">Sin escolaridad</option>
+                            <option value="1">Primaria incompleta</option>
+                            <option value="2">Primaria completa</option>
+                            <option value="3">Secundaria incompleta</option>
+                            <option value="4">Preparatoria incompleta</option>
+                            <option value="4">Preparatoria completa</option>
+                            <option value="5">Técnico</option>
+                            <option value="6">Profesional</option>
+                            <option value="7">Posgrado</option>
+                            <option value="8">No tengo papá</option>
+                            <option value="9">No lo sé</option>
+                        </select>
+                        </p>                     </div>
+                </div>
+                <div class="row align-items-end">
+                  <div class="col">
+                    <p> <h4> 
+                        <label for="parenjef" class="text">¿Qué parentesco tienes con el jefe del hogar?</label>
+                    </h4>   
+                    <br>
+
+                        <select name="parenjef" id="parenjef" class="select" required>
+                            <option selected disabled></option>
+                            <option value="0">Yo soy el hijo</option>
+                            <option value="1">Yo soy el jefe del hogar</option>
+                            <option value="2">Yo soy el(la) cónyuge</option>
+                            <option value="3">Yo soy un familiar</option>
+                            <option value="4">Yo no soy familiar</option>
+                            <option value="5">Otro</option>
+                        </select>
+                        </p>                     </div>
+                  <div class="col">
+                    <p> <h4>
+    
+                        <label for="saludafi" class="text">¿Estas afiliado a una institución de salud?</label>
+                    </h4>
+                    <br>
+
+                        <select name="saludafi" id="saludafi" class="select" required>
+                            <option selected disabled></option>
+                        <option value="0">Si</option>
+                        <option value="1">No</option>
+                    
+                    </select>
+                    </p>                  </div>
+                <div class="col">
+                    <p> <h4> 
+                                            
+                        <label for="estratos" class="text">¿Cual es tu estrato socioeconómico?</label>
+                    </h4>    
+                    <br>
+
+                        <select name="estratos" id="estratos" class="select" required>
+                                <option selected disabled></option>
+                            <option value="0">1(A)</option>
+                            <option value="1">2(B)</option>
+                            <option value="2">3(C)</option>
+                            <option value="3">4(D)</option>
+                            
+                            
+                        </select>
+                        </p>                    </div>
+                        
+                </div>
+                </div>
+            </div>
+        </div>
+    
+    <div class="boton"> 
+
+        <p><input type = "submit" value = "Predecir" class="sumbit"/></p>
+
+        <a href="http://127.0.0.1:5000/" class="btn btn-primary">Atras</a>
+    </div>
+</form>
+
+</div>
+
+
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
