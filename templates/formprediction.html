@@ -27,10 +27,11 @@
                 <option value="0">Por irme de viaje</option>
                 <option value="1">Cambio de domicilio</option>
                 <option value="2">Por el trabajo</option>
-                <option value="3">Me expulsaron/suspendieron</option>
-                <option value="4">Problemas familiares</option>
-                <option value="5">Problemas de salud</option>
-                                            
+                <option value="3">Problemas familiares</option>
+                <option value="4">Problemas de salud</option>
+                <option value="5">Me expulsaron/suspendieron</option>
+
+
                 </select>
                 
               
@@ -60,10 +61,10 @@
 
                 <select name= "vision" id="vision" class="select" required>
                     <option selected disabled></option>
-                <option value="0">Sólo seguir estudiando</option>
+                <option value="0">Seguir estudiando y buscar un trabajo</option>
                 <option value="1">Seguir estudiando y continuar trabajando</option>
                 <option value="2">Seguir estudiando y dejar de trabajar</option>
-                <option value="3">Seguir estudiando y buscar un trabajo</option>
+                <option value="3">Sólo seguir estudiando</option>
                 <option value="4">Dejar de estudiar y dedicarme a trabajar</option>
                 </select> 
             </p>          </div>
@@ -115,7 +116,7 @@
         <div class="row align-items-end">
           <div class="col">
             <p> <h4> 
-                <label for="califrec" class="text">Tus calificaciones mas frecuentes en tus estudios son:</label>
+                <label for="califrec" class="text">Tus calificaciones mas frecuentes en tus estudios son</label>
             </h4>
             <br>
 
@@ -135,9 +136,9 @@
 
                 <select name="pisocasa" id="pisocasa" class="select" required>
                     <option selected disabled></option>
-                <option value="0">Tierra</option>
-                <option value="1">Cemento</option>
-                <option value="2">Mosaico, madera u otro recubrimiento</option>
+                <option value="0">Cemento</option>
+                <option value="1">Mosaico, madera u otro recubrimiento</option>
+                <option value="2">Tierra</option>
             </select>
             </p>          </div>
           <div class="col">
@@ -210,21 +211,26 @@
                     </p>                  </div>
                   <div class="col">
                     <p> <h4> 
-                        <label for="vivescon" class="text">¿Con quién vives? (Puedes elegir mas de una opción)</label>
-                    </h4>
-                    <br>
+                      
+                            <label for="vivescon" class="text">¿Con quién vives? (Puedes elegir mas de una opción)</label>
+                        </h4>
+                        <br>
+    
+                        <select name="vivescon" id="vivescon" required multiple>
+                            <option value="" disabled selected>Selecciona con quién vives</option>
+                            <option value="0">Padre</option>
+                            <option value="1">Madre</option>
+                            <option value="2">Hermanos(as)</option>
+                            <option value="3">Otros familiares</option>
+                            <option value="4">Otras personas que no son familiares</option>
+                            <option value="5">Solo(a)</option>
+                            <option value="6">Con amigos</option>
+                          </select>
+                        </p>               
 
-                        <select name="vivescon" id="vivescon" class="select" required>
-                            <option selected disabled></option>
-                        <option value="0">Padre</option>
-                        <option value="1">Madre</option>
-                        <option value="2">Hermanos(as)</option>
-                        <option value="3">Otros familiares</option>
-                        <option value="4">Otras personas que no son familiares</option>
-                        <option value="5">Solo(a)</option>
-                        <option value="6">Con amigos</option>
-                    </select>
-                    </p>                  </div>
+                     
+                          </div>
+                                
                   <div class="col">
                     <p> <h4> 
 
@@ -235,17 +241,18 @@
 
                         <select name="escojefe" id="escojefe" class="select" required>
                             <option selected disabled></option>
-                            <option value="0">Sin escolaridad</option>
-                            <option value="1">Primaria incompleta</option>
-                            <option value="2">Primaria completa</option>
-                            <option value="3">Secundaria incompleta</option>
+                            <option value="0">Posgrado</option>
+                            <option value="1">Profesional</option>
+                            <option value="2">Técnico</option>
+                            <option value="3">Preparatoria completa</option>
                             <option value="4">Preparatoria incompleta</option>
-                            <option value="4">Preparatoria completa</option>
-                            <option value="5">Técnico</option>
-                            <option value="6">Profesional</option>
-                            <option value="7">Posgrado</option>
-                            <option value="8">No tengo papá</option>
-                            <option value="9">No lo sé</option>
+                            <option value="5">Secundaria completa</option>
+                            <option value="6">Secundaria incompleta</option>
+                            <option value="7">Primaria completa</option>
+                            <option value="8">Primaria incompleta</option>
+                            <option value="9">Sin escolaridad</option>
+                            <option value="10">No tengo papá</option>
+                            <option value="11">No lo sé</option>
                         </select>
                         </p>                     </div>
                 </div>
@@ -259,10 +266,10 @@
                         <select name="parenjef" id="parenjef" class="select" required>
                             <option selected disabled></option>
                             <option value="0">Yo soy el hijo</option>
-                            <option value="1">Yo soy el jefe del hogar</option>
-                            <option value="2">Yo soy el(la) cónyuge</option>
-                            <option value="3">Yo soy un familiar</option>
-                            <option value="4">Yo no soy familiar</option>
+                            <option value="1">Yo soy el(la) cónyuge</option>
+                            <option value="2">Yo soy un familiar</option>
+                            <option value="3">Yo no soy familiar</option>
+                            <option value="4">Yo soy el jefe del hogarY</option>
                             <option value="5">Otro</option>
                         </select>
                         </p>                     </div>
