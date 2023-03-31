@@ -19,33 +19,25 @@ def index():
 
 @app.route('/showpagetraining')
 def showpagetraining():
+  #imprimir primeras 5 lineas del dataset 
+  print(dataset.head()) 
+
+  #Preparar datos para entrenar 
+  #Dividir atributos y etiquetas
+
+  X = dataset.iloc[:, 0:18].values
+  y = dataset.iloc[:, -1].values
+
+  #dividir los datos en etapas de entrenamiento y prueba
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
  
-#imprimir primeras 5 lineas del dataset 
- print(dataset.head()) 
+ 
 
-#Preparar datos para entrenar 
-#Dividir atributos y etiquetas
-
- X = dataset.iloc[:, 0:18].values
- y = dataset.iloc[:, -1].values
-
-#dividir los datos en etapas de entrenamiento y prueba
- X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
-
- return render_template('training.html')
+  return render_template('training.html')
 
 @app.route('/showpageprediction')
 def showpageprediction():
-
-
-
-
- 
-#Preparar datos para entrenar 
-#Dividir atributos y etiquetas
-
-
-
+  
   return render_template('formprediction.html', variable= "alto")
   
 
@@ -54,7 +46,7 @@ def showpageprediction():
 def doprediction():
 
 
-  print (request)
+
 #global showPrediction 
   iescuela = int(request.form['iescuela'])
   #print ("escuela", iescuela)
@@ -115,24 +107,12 @@ def doprediction():
                                 solver= isolver,
                                 max_iter=imaxiter).fit(X_train, y_train)
 #Predicción 
+
   rango = mi_red_neuronal.predict([[iescuela,trabajar,vision,gastotra,tiempoce,becaestu,califrec,pisocasa,aguaserv,luzelect,internet,vivencas,trabajop,vivescon,parenjef,escojefe,saludafi,estratos]])
+#Nueva prediccion
+  newcase = mi_red_neuronal.predict([[iescuela,trabajar,vision,gastotra,tiempoce,becaestu,califrec,pisocasa,aguaserv,luzelect,internet,vivencas,trabajop,vivescon,parenjef,escojefe,saludafi,estratos]])
+  
 
-  #variables = ['iescuela','trabajar','vision','gastotra','tiempoce','becaestu','califrec','pisocasa','aguaserv','luzelect','internet','vivencas','trabajop','vivescon','parenjef','escojefe','saludafi','estratos']
-
-  #for var in variables: 
-    #plt.figure()
-    #sns.regplot(x=var, y='rangoina', data=dataset).set(title=f'Regression plot of {var} and non-attendance range');
-
-  #correlations = dataset.corr()
-
-  #sns.heatmap(correlations, annot=True).set(title='heatmap of non-attendance range Data - Pearson Correlations');
-
-  #print("Pearson Correlations of two features")
-  #print(correlations.loc['iescuela','rangoina'])
-
-
-
-  #
   #prediccion=showPrediction(rango[0])
   y_pred = mi_red_neuronal.predict(X_test)
   respuestaredneuronal = rango[0]
@@ -144,19 +124,16 @@ def doprediction():
   elif (respuestaredneuronal == 2): 
     mensajeprediccion = "El estudiante puede tener un rango de inasistencia Alto"
   
-  
-  print(mi_red_neuronal.score(X_test, y_test))
-
+  #Mostrar puntaje de precisión de la predicción 
   score = mi_red_neuronal.score(X_test, y_test)
-
-    
-
+  
+  #Convertir puntaje en porcentaje
   porcentaje = score * 100 
-
   str.format("{:.2f}%".format(porcentaje))
-
   resultado =  str.format("{:.2f}%".format(porcentaje))
 
+  
+  
  
 
 
