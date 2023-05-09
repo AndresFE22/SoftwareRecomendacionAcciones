@@ -146,12 +146,11 @@ def doprediction():
   #prediccion=showPrediction(rango[0])
   y_pred = mi_red_neuronal.predict(X_test)
   respuestaredneuronalo = rango[0]
-  mensajeprediccion =  "No se puedo determinar la respuesta de la prediccion"
-  if (respuestaredneuronalo == 1):
+  if (respuestaredneuronalo == 0):
     mensajeprediccion = "El estudiante puede tener un rango de inasistencia bajo"
-  elif (respuestaredneuronalo == 2): 
+  elif (respuestaredneuronalo == 1): 
     mensajeprediccion = "El estudiante puede tener un rango de inasistencia medio"
-  elif (respuestaredneuronalo == 3): 
+  elif (respuestaredneuronalo == 2): 
     mensajeprediccion = "El estudiante puede tener un rango de inasistencia Alto"
   
   #Mostrar puntaje de precisión de la predicción 
@@ -247,7 +246,6 @@ def doprediction():
   print("Este es el nombre del campo que hay que modificar")
   print(obtener_nombre_campo(listacampo, maximo)) 
 
-  new = newcase[indice_maximo_valor]
 
   campo_mod = obtener_nombre_campo(listacampo, maximo)
   print("indice de campo mod")
@@ -263,19 +261,24 @@ def doprediction():
   nuevovalor = None 
 
   respuestaredneuronals = None 
-  campos = None
   campo = listaordenada[0]
-  
-  b = True 
-  if respuestaredneuronalo <= 1:
-    print("No es necesario la recomendación, ya que el estudiante puede tener un rango de inasistencia bajo")
+  global campos 
+  campos = None
+  b = False
+  if respuestaredneuronalo == 0:
+      print("No es necesario la recomendación, ya que el estudiante puede tener un rango de inasistencia bajo")
   else:
-
-      # Ciclo para ajustar el valor del campo mientras respuestaredneuronals > respuestaredneuronalo
+    # Agregar mensaje de depuración
+    print(f"Lista ordenada: {listaordenada}")
+    # Ciclo para ajustar el valor del campo mientras respuestaredneuronals > respuestaredneuronal
     for campos in listaordenada:
+      respuestaredneuronals = None 
       valororiginal = newcase[indice_maximo_valor]
+      # Agregar mensaje de depuración
+      print(f"Campos: {campos}, valororiginal: {valororiginal}")
       while valororiginal > 0:
         valororiginal = valororiginal - 1
+        # Agregar mensaje de depuración
         print("modificamos del valor original")
         print(valororiginal)
         #Reconfigurar el caso con el nuevo valor
@@ -286,31 +289,34 @@ def doprediction():
         #Mostrar el resultado de la simulación
         print("Estos son los datos ajustados con la inteligencia artificial de la simulación:")
         print(simulacion)
-        if respuestaredneuronals == 1:
-          print("El estudiante puede tener un rango de inasistencia bajo.")
+        if respuestaredneuronals == 0:
+            print("El estudiante puede tener un rango de inasistencia bajo.")
+        elif respuestaredneuronals == 1:
+            print("El estudiante puede tener un rango de inasistencia medio.")
         elif respuestaredneuronals == 2:
-          print("El estudiante puede tener un rango de inasistencia medio.")
-        elif respuestaredneuronals == 3:
-          print("El estudiante puede tener  un rango de inasistencia alto.")
+            print("El estudiante puede tener  un rango de inasistencia alto.")
         #Determinar si se debe seguir ajustando el valor del campo
         if respuestaredneuronals < respuestaredneuronalo:
-          print(f"La opción '{valororiginal}' del campo '{campos[0]}' es la que cambia el resultado de '{respuestaredneuronalo}' a '{respuestaredneuronals}'.")
-          b = True
-          break
-      # Si llegamos al final del while y no se cumple la condición, el ciclo for continuará con el siguiente campo de la lista
-      
-          # Actualizar los valores para la próxima iteración
+            print(f"La opción '{valororiginal}' del campo '{campos[0]}' es la que cambia el resultado de '{respuestaredneuronalo}' a '{respuestaredneuronals}'.")
+            b = True
+            break
+        # Actualizar los valores para la próxima iteración
         maximo = max(lista)
         indice_maximo_valor = obtener_indice_tupla(listacampo, campomayor)
         valororiginal = newcase[indice_maximo_valor]
+      #Agregar mensaje de depuración
+      print(f"Valor original: {valororiginal}, b: {b}")
       if b:
-        print("Proceso terminado.") 
+        print("Proceso terminado.")
         break
-  print("Recorrido completamente")
-  
-  print(campos[0])
-  print(valororiginal)
-  
+   
+
+
+  if campos is not None:
+    print(campos[0])
+  else:
+    print("Campos es none")
+    print(valororiginal)
   return render_template('showprediction.html', variable = mensajeprediccion, score = resultado)  
 
 
