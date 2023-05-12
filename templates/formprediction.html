@@ -26,7 +26,7 @@
                         <option selected disabled></option>
                 <option value="0">Por irme de viaje</option>
                 <option value="1">Cambio de domicilio</option>
-                <option value="2">Por el trabajo</option>
+                <option value="2" selected>Por el trabajo</option>
                 <option value="3">Problemas familiares</option>
                 <option value="4">Problemas de salud</option>
                 <option value="5">Me expulsaron/suspendieron</option>
@@ -47,7 +47,7 @@
 
                 <select name="trabajas" id="trabajar" class="select" required>
                     <option selected disabled></option>
-                <option value="0">Si</option>
+                <option selected value="0">Si</option>
                 <option value="1">No</option>
                 </select>
             </p>
@@ -65,7 +65,7 @@
                 <option value="1">Seguir estudiando y continuar trabajando</option>
                 <option value="2">Seguir estudiando y dejar de trabajar</option>
                 <option value="3">Sólo seguir estudiando</option>
-                <option value="4">Dejar de estudiar y dedicarme a trabajar</option>
+                <option value="4" selected>Dejar de estudiar y dedicarme a trabajar</option>
                 </select> 
             </p>          </div>
         </div>
@@ -82,7 +82,7 @@
                 <select name="gastotra" id="gastotra" class="select" required>
                     <option selected disabled></option>
                 <option value="0">Menos o igual a $6000</option>
-                <option value="1">Más de $6000</option>
+                <option value="1" selected>Más de $6000</option>
                 </select>
             </p>    </div>
           <div class="col">
@@ -96,7 +96,7 @@
                 <select name="tiempoce" id="tiempoce" class="select" required>
                     <option selected disabled></option>
                 <option value="0">Menos o igual a 10 min</option>
-                <option value="1">Entre 11 a 30 min</option>
+                <option value="1" selected>Entre 11 a 30 min</option>
                 <option value="2">Mas de 30 min</option>
             </select>
             </p>          </div>
@@ -109,7 +109,7 @@
                 <select name="becaestu" id="becaestu" class="select" required>
                     <option selected disabled></option>
                 <option value="0">Si</option>
-                <option value="1">No</option>
+                <option value="1" selected>No</option>
                 </select>
             </p>          </div>
         </div>
@@ -124,7 +124,7 @@
                     <option selected disabled></option>
                 <option value="0">Altas</option>
                 <option value="1">Medias</option>
-                <option value="2">Bajas</option>
+                <option value="2" selected>Bajas</option>
             </select>
             </p>          </div>
           <div class="col">
@@ -136,7 +136,7 @@
 
                 <select name="pisocasa" id="pisocasa" class="select" required>
                     <option selected disabled></option>
-                <option value="0">Cemento</option>
+                <option value="0" selected>Cemento</option>
                 <option value="1">Mosaico, madera u otro recubrimiento</option>
                 <option value="2">Tierra</option>
             </select>
@@ -149,7 +149,7 @@
 
                 <select name="aguaserv" id="aguaserv" class="select" required>
                     <option selected disabled></option>
-                <option value="0">Si</option>
+                <option value="0" selected>Si</option>
                 <option value="1">No</option>
               
             </select>
@@ -165,7 +165,7 @@
                         <select name="luzelect" id="luzelect" class="select" required>
                             <option selected disabled></option>
                         <option value="0">Si</option>
-                        <option value="1">No</option>
+                        <option value="1" selected>No</option>
                       
                     </select>
                     </p>                  </div>
@@ -177,7 +177,7 @@
 
                         <select name="internet" id="internet" class="select" required>
                             <option selected disabled></option>
-                        <option value="0">Si</option>
+                        <option value="0" selected>Si</option>
                         <option value="1">No</option>
                       
                     </select>
@@ -189,7 +189,7 @@
                     <br>
                         <select name="vivencas" id="vivencas" class="select" required>
                             <option selected disabled></option>
-                        <option value="0">Menos o igual a 4</option>
+                        <option value="0" selected>Menos o igual a 4</option>
                         <option value="1">Entre 5 a 10</option>
                         <option value="2">Mas de 10</option>
                     </select>
@@ -205,7 +205,7 @@
                         <select name="trabajop" id="trabajop" class="select" required>
                             <option selected disabled></option>
                         <option value="0">Si</option>
-                        <option value="1">No</option>
+                        <option value="1" selected>No</option>
                       
                     </select>
                     </p>                  </div>
@@ -216,12 +216,12 @@
                         </h4>
                         <br>
     
-                        <select name="vivescon" id="vivescon" required multiple>
+                        <select name="vivescon" id="vivescon" required>
                             <option value="" disabled selected>Selecciona con quién vives</option>
                             <option value="0">Padre</option>
                             <option value="1">Madre</option>
                             <option value="2">Hermanos(as)</option>
-                            <option value="3">Otros familiares</option>
+                            <option value="3" selected>Otros familiares</option>
                             <option value="4">Otras personas que no son familiares</option>
                             <option value="5">Solo(a)</option>
                             <option value="6">Con amigos</option>
@@ -243,7 +243,7 @@
                             <option selected disabled></option>
                             <option value="0">Posgrado</option>
                             <option value="1">Profesional</option>
-                            <option value="2">Técnico</option>
+                            <option value="2" selected>Técnico</option>
                             <option value="3">Preparatoria completa</option>
                             <option value="4">Preparatoria incompleta</option>
                             <option value="5">Secundaria completa</option>
@@ -267,7 +267,7 @@
                             <option selected disabled></option>
                             <option value="0">Yo soy el hijo</option>
                             <option value="1">Yo soy el(la) cónyuge</option>
-                            <option value="2">Yo soy un familiar</option>
+                            <option value="2" selected>Yo soy un familiar</option>
                             <option value="3">Yo no soy familiar</option>
                             <option value="4">Yo soy el jefe del hogar</option>
                             <option value="5">Otro</option>
@@ -282,7 +282,7 @@
 
                         <select name="saludafi" id="saludafi" class="select" required>
                             <option selected disabled></option>
-                        <option value="0">Si</option>
+                        <option value="0" selected>Si</option>
                         <option value="1">No</option>
                     
                     </select>
@@ -297,7 +297,7 @@
                         <select name="estratos" id="estratos" class="select" required>
                                 <option selected disabled></option>
                             <option value="0">1(A)</option>
-                            <option value="1">2(B)</option>
+                            <option value="1" selected>2(B)</option>
                             <option value="2">3(C)</option>
                             <option value="3">4(D)</option>
                             

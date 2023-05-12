@@ -165,7 +165,7 @@ def doprediction():
   str.format("{:.2f}%".format(porcentaje))
   resultado =  str.format("{:.2f}%".format(porcentaje))
 
-  variables = ['iescuela', 'trabajas', 'vision','gastotra','tiempoce', 'becaestu', 'califrec', 'pisocasa','aguaserv','luzelect','internet', 'vivencas', 'trabajop','cvivestu','jefecasa', 'jefeesco','saludafi','estratos']
+  variables = ['iescuela', 'trabajas', 'vision', 'gastotra', 'tiempoce', 'becaestu', 'califrec', 'pisocasa', 'aguaserv', 'luzelect', 'internet', 'vivencas', 'trabajop', 'vivescon', 'parenjef', 'escojefe', 'saludafi', 'estratos']
 
   for var in variables:
     plt.figure(figsize=(10,8)) # Creating a rectangle (figure) for each plot
@@ -194,6 +194,7 @@ def doprediction():
       fieldtomodify = var
       lista.append(correlations.loc[var, 'rangoina'])
       listacampo.append((var,correlations.loc[var, 'rangoina']))
+      
   def obtener_nombre_campo(lista_campos_y_valores, valor_buscado):
     for tupla in lista_campos_y_valores:
         if tupla[1] == valor_buscado:
@@ -217,6 +218,12 @@ def doprediction():
   
   listaordenada = sorted(listacampo, key=lambda x: x[1], reverse=True)
 
+  campos_ordenados = [tupla[0] for tupla in listaordenada]
+  print(f"Campos ordenados {campos_ordenados}")
+  
+  
+  
+  
   #imprimir lista ordenada
   print("Esta es la lista ordenada")
   print(listaordenada)
@@ -258,10 +265,11 @@ def doprediction():
   valororiginal = newcase[indice_maximo_valor]
   print("modificacion del valor original")
   print(valororiginal)
-  nuevovalor = None 
-
+  
+  nueva_lista = newcase
+  print(f"Esta es la nueva lista: {nueva_lista}")
+  
   respuestaredneuronals = None 
-  campo = listaordenada[0]
   global campos 
   campos = None
   b = False
@@ -270,45 +278,53 @@ def doprediction():
   else:
     # Agregar mensaje de depuración
     print(f"Lista ordenada: {listaordenada}")
+    
     # Ciclo para ajustar el valor del campo mientras respuestaredneuronals > respuestaredneuronal
-    for campos in listaordenada:
+    for campos in campos_ordenados:
       respuestaredneuronals = None 
-      valororiginal = newcase[indice_maximo_valor]
-      # Agregar mensaje de depuración
+      indice_campo = campos_ordenados.index(campos)
+      valororiginal = newcase[indice_campo]
+            # Agregar mensaje de depuración
       print(f"Campos: {campos}, valororiginal: {valororiginal}")
+      
       while valororiginal > 0:
         valororiginal = valororiginal - 1
         # Agregar mensaje de depuración
         print("modificamos del valor original")
         print(valororiginal)
-        #Reconfigurar el caso con el nuevo valor
-        newcase[indice_maximo_valor] = valororiginal
+        
+        newcase[indice_campo] = valororiginal
+        
         #Hacer la simulación de la predicción con la red neuronal
         simulacion = mi_red_neuronal.predict([newcase])
         respuestaredneuronals = simulacion[0]
+        
         #Mostrar el resultado de la simulación
         print("Estos son los datos ajustados con la inteligencia artificial de la simulación:")
         print(simulacion)
+        
         if respuestaredneuronals == 0:
-            print("El estudiante puede tener un rango de inasistencia bajo.")
+          print("El estudiante puede tener un rango de inasistencia bajo.")
         elif respuestaredneuronals == 1:
-            print("El estudiante puede tener un rango de inasistencia medio.")
+          print("El estudiante puede tener un rango de inasistencia medio.")
         elif respuestaredneuronals == 2:
-            print("El estudiante puede tener  un rango de inasistencia alto.")
+          print("El estudiante puede tener  un rango de inasistencia alto.")
+            
         #Determinar si se debe seguir ajustando el valor del campo
         if respuestaredneuronals < respuestaredneuronalo:
-            print(f"La opción '{valororiginal}' del campo '{campos[0]}' es la que cambia el resultado de '{respuestaredneuronalo}' a '{respuestaredneuronals}'.")
-            b = True
-            break
-        # Actualizar los valores para la próxima iteración
-        maximo = max(lista)
-        indice_maximo_valor = obtener_indice_tupla(listacampo, campomayor)
-        valororiginal = newcase[indice_maximo_valor]
+          print(f"La opción '{valororiginal}' del campo '{campos}' es la que cambia el resultado de '{respuestaredneuronalo}' a '{respuestaredneuronals}'.")
+          b = True
+          break
+        
+    
+      valororiginal = newcase[indice_campo]
+      
       #Agregar mensaje de depuración
       print(f"Valor original: {valororiginal}, b: {b}")
+      
       if b:
         print("Proceso terminado.")
-        break
+        break 
    
 
 
@@ -317,6 +333,15 @@ def doprediction():
   else:
     print("Campos es none")
     print(valororiginal)
+    
+    #Elección de la recomendación
+    
+      #Definir los códigos
+  codigos = {
+    'iescuela' : { 
+      'Seguir estudiando y buscar un trabajo': 1, 'Seguir estudiando y continuar trabajando': 2, 'Seguir estudiando y dejar de trabajar': 3, 'Sólo seguir estudiando': 4, 'Dejar de estudiar y dedicarme a trabajar': 5}
+  }
+    
   return render_template('showprediction.html', variable = mensajeprediccion, score = resultado)  
 
 
