@@ -253,7 +253,8 @@ def doprediction():
   print("Este es el nombre del campo que hay que modificar")
   print(obtener_nombre_campo(listacampo, maximo)) 
 
-
+  
+  
   campo_mod = obtener_nombre_campo(listacampo, maximo)
   print("indice de campo mod")
   print(campo_mod[indice_maximo_valor])
@@ -273,6 +274,17 @@ def doprediction():
   global campos 
   campos = None
   b = False
+  
+  asociacion = {}
+  
+  for campo, valor in zip(variables, newcase):
+    if str(valor) not in asociacion:
+        asociacion[str(valor)] = [campo]
+    else:
+        asociacion[str(valor)].append(campo)
+    
+  print(f"asociacion: {asociacion}")
+  
   if respuestaredneuronalo == 0:
       print("No es necesario la recomendación, ya que el estudiante puede tener un rango de inasistencia bajo")
   else:
