@@ -8,6 +8,8 @@
     <style>
         body {
             background-image: url(/static/images/background.png);
+            display: grid;
+            place-items: center;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
@@ -19,11 +21,13 @@
         }
         
         table {
-            width: 100%;
+            
+            width: 70%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 0px;
             background-color: #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
         }
         
         th, td {
@@ -33,9 +37,29 @@
         }
         
         th {
-            background-color: #f2f2f2;
+            background-color: #00bae9;
             font-weight: bold;
-            color: #555;
+            color: #ffffff;
+        }
+
+        .thead {
+          background-color: #ffffff;
+          padding: 0%;
+          border-radius: 20px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        
+          
+          
+        }
+
+        .thead h1 {
+          color: #00bae9;
+          text-align: left;
+          padding-left: 5%;
+          font-size: 20pt;
+          font-weight: bold;
+          font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
         }
         
         tr:nth-child(even) {
@@ -62,7 +86,7 @@
             }
 
         .boton-ver {
-            background-color: #007bff;
+            background-color: #00bae9;
             border: none;
             color: #fff;
             padding: 6px 12px;
@@ -72,7 +96,7 @@
         }
 
         .boton-ver:hover {
-            background-color: #0056b3;
+            background-color: #008fb3;
   }
         
         @media screen and (max-width: 600px) {
@@ -81,12 +105,33 @@
                 overflow-x: auto;
             }
         }
+
+        .recom {
+          background-color: white;
+          border-radius: 50px;
+          height: 100%;
+          font-size: large;
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+          font-weight: bold;
+          margin-top: 0;
+
+
+
+        }
+
+        .recom h1 {
+          color: #007bff;
+        }
     </style>
 </head>
 <body>
-    <h1>Recomendaciones</h1>
+ 
 <table>
   <thead>
+    <tr>
+      <th colspan="4" class="thead"><h1>Recomendaciones</h1>
+      </th>
+    </tr>
     <tr>
       <th>Título</th>
       <th>Ver descripción</th>

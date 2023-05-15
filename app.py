@@ -147,11 +147,11 @@ def doprediction():
   y_pred = mi_red_neuronal.predict(X_test)
   respuestaredneuronalo = rango[0]
   if (respuestaredneuronalo == 0):
-    mensajeprediccion = "El estudiante puede tener un rango de inasistencia bajo"
+    mensajeprediccion = "Bajo"
   elif (respuestaredneuronalo == 1): 
-    mensajeprediccion = "El estudiante puede tener un rango de inasistencia medio"
+    mensajeprediccion = "Medio"
   elif (respuestaredneuronalo == 2): 
-    mensajeprediccion = "El estudiante puede tener un rango de inasistencia Alto"
+    mensajeprediccion = "Alto"
   
   #Mostrar puntaje de precisión de la predicción 
   score = mi_red_neuronal.score(X_test, y_test)
@@ -434,7 +434,7 @@ def doprediction():
   session['valororiginal'] = valororiginal
     
     
-  return render_template('showprediction.html', variable = mensajeprediccion, score = resultado)  
+  return render_template('showprediction.html', variable = mensajeprediccion , score = resultado)  
 
 
 @app.route('/recomendation', methods = ['GET', 'POST'])
