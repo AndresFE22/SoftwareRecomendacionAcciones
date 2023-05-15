@@ -5,7 +5,7 @@ body {
     align-items: center;
     font-family: Arial, Helvetica, Sans-serif;
   color: white;
-  background-image: url("images/fondo1.jpg");
+  background-image: url("/static/images/ai.jpg");
   background-repeat: no-repeat;
   background-size: cover;
    
@@ -13,37 +13,6 @@ body {
   
   }
   
-  
-
-  
-  
-  select {
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    -ms-appearance:none;
-    appearance:none;
-    outline:0;
-    box-shadow:none;
-    border:0!important;
-    background: #d6d6d6;
-    background-image: none;
-    flex: 1;
-    padding: 0 .5em;
-    color:#757575;
-    cursor:pointer;
-    font-size: 1em;
-    font-family: 'Open Sans', sans-serif;
-    
-  }
-  select::-ms-expand {
-    display: none;
-    }
-    .text {
-        color: rgb(29, 29, 29);
-        font-size: large;
-        font-weight: bold;
-
-}
     
     .caja h1 {
       text-align: center;
@@ -57,64 +26,94 @@ body {
         background-color: #fff;
         width: 80%;
         border-radius: 10px;
-        box-shadow: -8px 10px 15px #79867d;
-        margin: 10%;
-        padding: 100px;
-        border: 20px solid #50c03a
+        box-shadow: -8px 10px 15px #00000000;
+        margin: 5%;
+        
 
     }
-    .select {
-      position: relative;
-     
-      
-      width: 20em;
-      height: 3em;
-      line-height: 3;
-      background: #bebebe8f;
-      overflow: hidden;
-      border-radius: .25em;
-      padding-top: 0px;
-      opacity: 1;
-      font-weight: bold;
-      transition: all .5s ease;
-      
-      color: #858484;
-      
-      
-
-      }
-      
-      .select .option {
-        color: black;
-      }
         
-      
       .sumbit {
-        background: linear-gradient(0deg, rgba(0,117,53,1) 0%, rgba(0,197,41,1) 100%);
+        
+        font-family: Roboto, sans-serif;
+        font-weight: 100;
+        font-size: 24px;
+        color: #fff;
+        background-color: #0066CC;
+        padding: 10px 29px;
+        border: 2px solid #0066cc;
+        box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+        border-radius: 26px 50px 50px 23px;
+        transition : 390ms;
+        transform: translateY(0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        
+        }
+        
+        .sumbit2 {
+        
+          font-family: Roboto, sans-serif;
+          font-weight: 100;
+          font-size: 24px;
+          color: #fff;
+          background-color: #0066CC;
+          padding: 10px 29px;
+          border: 2px solid #0066cc;
+          box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+          border-radius: 50px 50px 50px 50px;
+          transition : 390ms;
+          transform: translateY(0);
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          cursor: pointer;
+          text-decoration: none;
+ 
+        }
 
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 10px;
-  height: 100%;
-  width: 100%;
+        .sumbit:hover{
+        
+        transition : 390ms;
+        padding: 10px 41px;
+        transform : translateY(-0px);
+        background-color: #fff;
+        color: #0066cc;
+        border: solid 2px #0066cc;
+        }
+        
+        .sumbit2:hover{
+        
+          transition : 390ms;
+          padding: 10px 41px;
+          transform : translateY(-0px);
+          background-color: #fff;
+          color: #0066cc;
+          border: solid 2px #0066cc;
+          }
+        
+        .atras {
+          display: grid;
+          place-items: center;
+          height: 100%;
+          width: 100%;
+        }
+
+        .predict {
+          display: grid;
+          place-items: center;
+          height: 100%;
+          width: 100%;
+        }
+        
   
-      }
+      
 
       .boton {
         border: none;
   color: white;
-  padding: 15px 32px;
+        
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -123,22 +122,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   border-radius: 10px;
   height: 100%;
   width: 100%;
-
+  margin-bottom: 5%;
+  margin-top: 5%;
       }
-      .sumbit:hover {
-        transform: scale(1.1);
-        transition: all 1s 0s ease;
-        background: linear-gradient(270deg, rgba(0,117,53,1) 0%, rgba(0,197,41,1) 100%);
-      }
-
      
   
    .select:hover::after {
-      color: #23b499;
+      color: #00b7ff;
    }
   
    .title1{
@@ -146,9 +140,108 @@ body {
    }
 
    .caja .tit {
+    background-image: url(/static/images/back.png);
+    background-size: cover;
+    background-position-y: center;
     padding: 0%;
-    height: 100%;
+    height: 30vh;
     width: 100%;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    display: grid;
+    place-items: center;
+    filter: brightness(0.8);
 
    } 
+
+
+
+   .caja .tit h1{
+    font-size: 50pt;
+    text-align: center;
+    z-index: 999;
+
+
+   }
+   @media  (max-width: 400px) {
+    .caja .tit
+    {
+      background-size: contain;
+      max-width: 100%;
+      height: auto;
+    }
+    
+    .caja .tit h1{
+      font-size: 30pt;
+      text-align: center;
+    }
+
+   }
    
+   .col select {
+    appearance: none;
+	  -webkit-appearance: none;
+	  -moz-appearance: none;
+   }
+
+   .col select::-ms-expand {
+    display: none;
+}
+
+.col {
+	max-width: 250px;
+	position: relative;
+}
+ 
+.col select{
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  	padding: 7px 10px;
+  	height: 42px;
+  	outline: 0; 
+  	border: 0;
+	border-radius: 0;
+	background: #ffffff;
+	color: #2b2b2b;
+	font-size: 1em;
+	color: #000000;
+	font-family: 
+	'Quicksand', sans-serif;
+	border:2px solid rgba(0,0,0,0.2);
+    border-radius: 0;
+    position: relative;
+    transition: all 0.25s ease;
+    font-weight: bold;
+}
+ 
+.col select:hover{
+	background: #0088f836;
+}
+ 
+/* 
+Creamos la fecha que aparece a la izquierda del select.
+Realmente este elemento es un cuadrado que sólo tienen
+dos bordes con color y que giramos con transform: rotate(-45deg);
+*/
+.col i{
+	position: absolute;
+	right: 20px;
+	top: calc(71% - 0px);
+	width: 13px;
+	height: 13px;
+	display: block;
+	border-left:4px solid #2AC176;
+	border-bottom:4px solid #2AC176;
+	transform: rotate(-45deg); /* Giramos el cuadrado */
+	transition: all 0.25s ease;
+}
+ 
+.col:hover i{
+	margin-top: 3px;
+}
+
+.text {
+  color: #000000a1;
+} 
+
