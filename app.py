@@ -278,13 +278,26 @@ def doprediction():
   asociacion = {}
   
   for campo, valor in zip(variables, newcase):
-    if str(valor) not in asociacion:
-        asociacion[str(valor)] = [campo]
-    else:
-        asociacion[str(valor)].append(campo)
-    
+    if campo not in asociacion:
+        asociacion[campo] = str(valor)
+
   print(f"asociacion: {asociacion}")
-  
+
+  newcase_ordenado = []
+
+  # Ordenar newcase según campos_ordenados
+  for campo in campos_ordenados:
+    print(f"Voy por el campo {campo}")
+    # Buscar el valor correspondiente al campo en la asociación
+    valor = asociacion.get(campo)
+    print(f"Valor es {valor}")
+    # Verificar si el valor existe en la lista newcase
+    if valor is not None:
+        # Agregar el valor correspondiente a newcase_ordenado
+        newcase_ordenado.append(int(valor))
+
+  print("newcase ordenado:", newcase_ordenado)
+
   if respuestaredneuronalo == 0:
       print("No es necesario la recomendación, ya que el estudiante puede tener un rango de inasistencia bajo")
   else:
@@ -295,8 +308,10 @@ def doprediction():
     for campos in campos_ordenados:
       respuestaredneuronals = None 
       indice_campo = campos_ordenados.index(campos)
-      valororiginal = newcase[indice_campo]
-            # Agregar mensaje de depuración
+      print(f"Este es el indice {indice_campo}")
+
+      valororiginal = newcase_ordenado[indice_campo]
+      #Agregar mensaje de depuración
       print(f"Campos: {campos}, valororiginal: {valororiginal}")
       
       while valororiginal > 0:
@@ -305,10 +320,10 @@ def doprediction():
         print("modificamos del valor original")
         print(valororiginal)
         
-        newcase[indice_campo] = valororiginal
+        newcase_ordenado[indice_campo] = valororiginal
         
         #Hacer la simulación de la predicción con la red neuronal
-        simulacion = mi_red_neuronal.predict([newcase])
+        simulacion = mi_red_neuronal.predict([newcase_ordenado])
         respuestaredneuronals = simulacion[0]
         
         #Mostrar el resultado de la simulación
@@ -329,15 +344,15 @@ def doprediction():
           break
         
     
-      valororiginal = newcase[indice_campo]
+      valororiginal = newcase_ordenado[indice_campo]
       
       #Agregar mensaje de depuración
       print(f"Valor original: {valororiginal}, b: {b}")
-      
+
+      # Ordenar newcase según campos_ordenados
       if b:
         print("Proceso terminado.")
         break 
-   
 
 
   if campos is not None:
@@ -351,13 +366,137 @@ def doprediction():
       #Definir los códigos
   codigos = {
     'iescuela' : { 
-      'Seguir estudiando y buscar un trabajo': 1, 'Seguir estudiando y continuar trabajando': 2, 'Seguir estudiando y dejar de trabajar': 3, 'Sólo seguir estudiando': 4, 'Dejar de estudiar y dedicarme a trabajar': 5}
-  }
+      'Por irme de viaje': 1, 'Cambio de domicilio': 2, 'Por el trabajo': 3, 'Problemas familiares': 4, 'Problemas de salud': 5, 'Me expulsaron/suspendieron': 6},
+
+    'trabajas' : {
+      'Si': 1, 'No':2},
+
+    'vision' : {
+      'Seguir estudiando y buscar un trabajo': 1, 'Seguir estudiando y continuar trabajando': 2, 'Seguir estudiando y dejar de trabajar': 3, 'Sólo seguir estudiando': 4, 'Dejar de estudiar y dedicarme a trabajar': 5},
+      
+    'gastotra' : {
+      'Menos o igual a $6000': 1, 'Más de $6000': 2},
+      
+    'tiempoce' : {
+      'Menos o igual a 10 min': 1, 'Entre 11 a 30 min': 2, 'Mas de 30 min': 3},
+
+    'becaestu' : {
+      'Si': 1, 'No':2},
+
+    'califrec' : { 
+      'Altas': 1, 'Medias': 2, 'Bajas': 3},
+
+    'pisocasa' : {
+      'Cemento': 1, 'Mosaico, madera u otro recubrimiento': 2, 'Tierra': 3},
+
+    'aguaserv' : {
+      'Si': 1, 'No':2},
+      
+    'luzelect' : {
+      'Si': 1, 'No':2},
+      
+    'internet' : {
+     'Si': 1, 'No':2},
+
+    'vivencas' : {
+      'Si': 1, 'No':2},
+
+    'iescuela' : { 
+      'Menos o igual a 4': 1, 'Entre 5 a 10': 2, 'Mas de 10': 3},
+
+    'trabajop' : {
+      'Si': 1, 'No':2},
+
+    'vivescon' : {
+      'Padre': 1, 'Madre': 2, 'Hermanos(as)': 3, 'Otros familiares': 4, 'Otras personas que no son familiares': 5, 'Solo(a)': 6, 'Con amigos': 7},
+      
+    'escojefe' : {
+      'Posgrado': 1, 'Profesional': 2, 'Técnico': 3, 'Preparatoria completa': 4, 'Preparatoria incompleta': 5, 'Secundaria completa': 6, 'Secundaria incompleta': 7, 'Primaria completa': 8, 'Primaria incompleta': 9, 'Sin escolaridad': 10, 'No tengo papá': 11, 'No lo sé': 12},
+      
+    'parenjef' : {
+      'Yo soy el hijo': 1, 'Yo soy el(la) cónyuge': 2, 'Yo soy un familiar': 3, 'Yo no soy familiar': 4, 'Yo soy el jefe del hogar': 5, 'Otro': 6},
+
+    'saludafi' : {
+      'Si': 1, 'No':2},
+
+    'estratos' : {
+       '1(A)': 1, '2(B)': 2, '3(C)': 3, '4(D)': 4
+    }
+       
+    }
+  
+
+  print(f"Estas son las variables {codigos}, {campos}, {valororiginal}")
+    
+   # Guardar las variables en la sesión
+  session['codigos'] = codigos
+  session['campos'] = campos
+  session['valororiginal'] = valororiginal
+    
     
   return render_template('showprediction.html', variable = mensajeprediccion, score = resultado)  
 
 
-  
- 
+@app.route('/recomendation', methods = ['GET', 'POST'])
+def recom():
 
- 
+  codigos = session.get('codigos')
+  campos = session.get('campos')
+  valororiginal = session.get('valororiginal')
+
+  # Definir la función para calcular la distancia de Hamming
+  def hamming_distance(str1, str2):
+    distance = 0
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            distance += 1
+    return distance
+
+  def get_recommendation_by_field(row, field, recommendation_col):
+    value = row[field]
+    recommendations = df.loc[df[field] == value, recommendation_col].tolist()
+    if recommendations:
+        distances = [hamming_distance(value.lower(), rec.lower()) for rec in recommendations]
+        min_dist = min(distances)
+        return recommendations[distances.index(min_dist)]
+    return None
+  
+  print("Campo:", df[campos])
+  #Definir valor
+  valor_codificado = valororiginal
+  valor = list(codigos[campos].keys())[list(codigos[campos].values()).index(valor_codificado)]
+  print("Este esa la opcion", valor)
+  recomendaciones_col = f"{campos}r"
+  recommendation = None
+
+  # Encontrar las filas que corresponden al valor específico del campo
+  mask = (df[campos] == valor)
+  print(mask)
+
+  # Buscar la recomendación en la columna correspondiente
+  for index, row in df.iterrows():
+    if mask[index]:
+        recommendation = get_recommendation_by_field(row, campos, recomendaciones_col)
+        if recommendation:
+            break
+        
+  if recommendation:
+    print(f"La recomendación para el campo {campos} y el valor {valor} es: {recommendation}")
+  else:
+    print(f"No se encontraron recomendaciones para el campo {campos} y el valor {valor}")
+
+  recomendaciones = recommendation.split(';')
+
+  print("Recomendaciones escogidas")
+  print(recomendaciones)
+
+  dff = dfh[dfh['Recom'].isin(recomendaciones)]
+
+  print("Heurística:", dff)
+
+  
+  return render_template('recomendaciones.html', dff=dff)
+  
+
+
+

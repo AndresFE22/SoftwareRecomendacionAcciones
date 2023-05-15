@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones</title>
+    <style>
+        body {
+            background-image: url(/static/images/background.png);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .recomendacion {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .descripcion {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #555;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s;
+            }
+
+        .boton-ver {
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .boton-ver:hover {
+            background-color: #0056b3;
+  }
+        
+        @media screen and (max-width: 600px) {
+            table {
+                width: 100%;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Recomendaciones</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Ver descripción</th>
+      <th>Costo</th>
+      <th>Dificultad</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for index, row in dff.iterrows() %}
+    <tr>
+      <td class="recomendacion">{{ row['Recom'].split(':')[0] }}</td>
+      <td>
+        <button onclick="mostrarDescripcion(this)" class="boton-ver">Ver descripción</button>
+        <div class="descripcion">
+          {{ row['Recom'].split(':')[1] }}
+        </div>
+      </td>
+      <td>{{ row['Costo'] }}</td>
+      <td>{{ row['Dificultad'] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<script>
+  function mostrarDescripcion(boton) {
+    var descripcion = boton.nextElementSibling;
+    if (descripcion.style.display === "none") {
+      descripcion.style.display = "block";
+      descripcion.style.maxHeight = descripcion.scrollHeight + "px";
+    } else {
+      descripcion.style.display = "none";
+      descripcion.style.maxHeight = "0";
+    }
+  }
+</script>
+    
+    
+</body>
+</html>
