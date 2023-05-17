@@ -1,50 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/static/estilo3.css">
-        <title>FlaskBlog</title> 
-    </head>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page in HTML with CSS Code Example</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="/static/EstilosIndex.css">
+
+</head>
 <body>
-    <div class="container">
-        <div class="input">
-            
-            <div class="title">
-                <div class="logo">
-                    <figure>
-                        <img src="/static/images/149239.png" alt="">
-                    </figure>
-                </div>
-                <div class="msg">
-                    <h1>¡BIENVENIDO!</h1>
-                    
-                    
-                    <h2>modelo de prevención de la inasistencia escolar</h2>
-                </div>      
-            </div>
-            
-            <div class="button">
+<!-- partial:index.partial.html -->
+<div class="container">
+	<div class="box-form">
+		<div class="left">
+			<div class="overlay">
+				<figure>
+					<img src="/static/images/programacion-web.png" alt="logo">
+				</figure>
+			<h1>Bienvenidos</h1>
+			<br>
+			<p>Sistema recomendador de acciones para la prevención de la inasistencia escolar</p>
+			
+			
+		</div>
+			
+		</div>
+		
+		
+			<div class="right">
+			<h5>Login</h5>
+			<p>Elija la acción que desea realizar</p>
+			<div class="inputs">
+				<div class="but">
+                    <a href="/showpageprediction">
+                        <button>PREDECIR INASISTENCIA</button>
+                    </a>
+					
+	
+				</div>
+				<div class="but">
+                    <a href="/showpagetraining">
+                        <button>ENTRENAR MODELO</button>
+                    </a>
+					
+				</div>
+			</div>		
+					<!-- Angular -->
+				<a href="/"><p>Atras</p></a>
+	
+	
+			</div>
+	<!-- partial -->
+</div>
+<div class="logotypes">
+	<div class="img1">
+		<img src="/static/images/Logos UNICOR.png" alt="">
 
-                <h2>Elegir la acción a realizar</h2>
+	</div>
+	<div class="img2">
+		<img src="/static/images/Logo LIEMAV.png" alt="">
+	</div>
+	<div class="img3">
+		<img src="/static/images/logo-edutal.png" alt="">
+	</div>
+</div>
 
-                
+</div>
 
-                
-                    <a href="/showpageprediction" class="predict"><h3>
-                        Predecir
-                    </h3></a>
-                
-                    
-                    <a href="http://127.0.0.1:5000/showpagetraining" class="training"><h3>
-                      Entrenar
-                    </h3></a>
-                   
-                
-            
-            </div>
-            
-        </div>
-    </div>
   
 </body>
 </html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+          }
+          
+          .top-section {
+            text-align: center;
+          }
+          
+          .responsive-image {
+            max-width: 100%;
+            height: auto;
+          }
+          
+          .logo-image {
+            width: 50px; /* Ajusta el tamaño según tus necesidades */
+          }
+          
+          .bottom-section {
+            margin-top: 20px;
+          }
+          
+          .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+          }
+          
+          .btn:hover {
+            background-color: #0056b3;
+          }
+          
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-section">
+          <h2>¡BIENVENIDO!</h2>
+          <p>Modelo de prevención de la inasistencia escolar</p>
+          <img src="URL_DE_LA_IMAGEN" alt="Imagen" class="responsive-image">
+          <img src="URL_DEL_LOGO" alt="Logo" class="logo-image">
+        </div>
+        <div class="bottom-section">
+          <button class="btn btn-predict">Predecir</button>
+          <button class="btn btn-train">Entrenar</button>
+        </div>
+      </div>
+      
+</body>
+</html>
