@@ -105,10 +105,11 @@ border: solid 2px #0066cc;
   background-position-y: center;
 }
 .clash-card__image--barbarian img {
-  width: 400px;
+  width: 300px;
+  height: 300px;
   position: absolute;
-  top: -65px;
-  left: -10px;
+  top: -70px;
+  left: 20px;
 }
 
 

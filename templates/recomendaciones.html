@@ -73,7 +73,6 @@
         }
 
         .descripcion {
-            display: none;
             margin-top: 10px;
             padding: 10px;
             background-color: #f2f2f2;
@@ -144,7 +143,7 @@
     <tr>
       <td class="recomendacion">{{ row['Recom'].split(':')[0] }}</td>
       <td>
-        <button onclick="mostrarDescripcion(this)" class="boton-ver">Ver descripción</button>
+        <button class="boton-ver">Ver descripción</button>
         <div class="descripcion">
           {{ row['Recom'].split(':')[1] }}
         </div>
@@ -157,16 +156,21 @@
 </table>
 
 <script>
-  function mostrarDescripcion(boton) {
-    var descripcion = boton.nextElementSibling;
-    if (descripcion.style.display === "none") {
-      descripcion.style.display = "block";
-      descripcion.style.maxHeight = descripcion.scrollHeight + "px";
+var acc = document.getElementsByClassName("boton-ver");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function(){
+    this.classList.toggle("active");
+    var descripcion = this.nextElementSibling;
+    if (descripcion.style.maxHeight) {
+      descripcion.style.maxHeight = null;
     } else {
-      descripcion.style.display = "none";
-      descripcion.style.maxHeight = "0";
-    }
-  }
+      descripcion.style.maxHeight = descripcion.scrollHeight + "px";
+    } 
+  })
+}
+
 </script>
     
     
