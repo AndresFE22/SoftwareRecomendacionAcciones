@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, jsonify
 import pandas as pd
 import numpy as np
 #cargar el conjunto de datos desde un archivo csv
@@ -36,6 +36,21 @@ app.secret_key = 'mi_clave_secreta'
 @app.route('/')
 def index():
     return render_template('indexinter.html')
+  
+  
+@app.route('/actualizarDS')
+def newdt():
+  archivo = request.files['archivo_csv']
+  archivo.save('datasetPrediccionprueba.csv')
+  
+  #Actualizar Dataset
+  global dataset 
+  dataset = pd.read_csv('datasetPrediccionprueba.csv', delimiter=';')
+  
+  
+  return jsonify('msg')
+
+
 
 @app.route('/showpagetraining')
 def showpagetraining():

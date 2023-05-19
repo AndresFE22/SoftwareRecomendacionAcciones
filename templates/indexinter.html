@@ -29,7 +29,7 @@
 		
 		
 			<div class="right">
-			<h5>Login</h5>
+			<h5>TruancyStop</h5>
 			<p>Elija la acción que desea realizar</p>
 			<div class="inputs">
 				<div class="but">
@@ -40,10 +40,7 @@
 	
 				</div>
 				<div class="but">
-                    <a href="/showpagetraining">
-                        <button>ENTRENAR MODELO</button>
-                    </a>
-					
+                        <button id="miBoton">ENTRENAMIENTO</button>				
 				</div>
 			</div>		
 					<!-- Angular -->
@@ -53,6 +50,63 @@
 			</div>
 	<!-- partial -->
 </div>
+
+<!-- Modal-->
+
+	<div id="miModal" class="modal">
+		<div class="modal-contenido">
+		  <span class="cerrar">&times;</span>
+		  <div class="butraining">
+			<div class="buttr1">
+				<div class="upload">
+
+					<a class="act" href="/actualizarDS" type="Submit">Actualizar dataset</a>
+
+				</div>
+
+				<div class="drop">
+
+					<label for="archivos" class="drop-container">
+						<span>
+						<h2>Soltar archivos aquí</h2>
+						</span>
+						<input type="file" id="archivos" name="archivo_csv" accept=".csv" required style="display: none;">
+					</label>
+
+				</div>
+				
+				
+			</div>			
+			<div class="buttr1">
+
+				<div class="titletr">
+
+				<p>
+					Entrenamiento del modelo
+				</p>	
+
+				</div>
+
+				<div class="buttontr">
+					<a href="/showpagetraining">
+						<button>Entrenar modelo</button>
+					</a>
+				</div>
+	
+				
+				
+			</div>
+			</div>
+			
+		
+		  </div>
+		</div>
+	</div>
+
+
+
+
+
 <div class="logotypes">
 	<div class="img1">
 		<img src="/static/images/Logos UNICOR.png" alt="">
@@ -69,5 +123,36 @@
 </div>
 
   
+
+<script>
+	// Obtener los elementos necesarios
+var modal = document.getElementById("miModal");
+var boton = document.getElementById("miBoton");
+var cerrar = document.getElementsByClassName("cerrar")[0];
+
+// Función para abrir el modal
+function abrirModal() {
+  modal.style.display = "block";
+}
+
+// Función para cerrar el modal
+function cerrarModal() {
+  modal.style.display = "none";
+}
+
+// Asociar eventos a los elementos
+boton.addEventListener("click", abrirModal);
+cerrar.addEventListener("click", cerrarModal);
+window.addEventListener("click", function(event) {
+  if (event.target == modal) {
+    cerrarModal();
+  }
+});
+</script>
 </body>
+
+
+
+
+
 </html>
