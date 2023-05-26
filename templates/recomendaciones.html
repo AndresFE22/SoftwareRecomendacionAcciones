@@ -156,20 +156,36 @@
 </table>
 
 <script>
-var acc = document.getElementsByClassName("boton-ver");
-var i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function(){
-    this.classList.toggle("active");
-    var descripcion = this.nextElementSibling;
-    if (descripcion.style.maxHeight) {
-      descripcion.style.maxHeight = null;
-    } else {
-      descripcion.style.maxHeight = descripcion.scrollHeight + "px";
-    } 
-  })
-}
+window.addEventListener("load", function() {
+  var botonesVer = document.getElementsByClassName("boton-ver");
+
+  // Agregar evento click a cada botón "Ver descripción"
+  for (var i = 0; i < botonesVer.length; i++) {
+    botonesVer[i].addEventListener("click", function() {
+      // Obtener la fila actual
+      var fila = this.parentNode.parentNode;
+  
+      // Crear una nueva fila para la descripción
+      var nuevaFila = document.createElement("tr");
+      var nuevaCelda = document.createElement("td");
+      nuevaCelda.setAttribute("colspan", "4");
+  
+      // Crear el div de la descripción
+      var descripcionDiv = document.createElement("div");
+      descripcionDiv.classList.add("descripcion");
+      descripcionDiv.textContent = this.nextElementSibling.textContent;
+  
+      // Agregar el div de la descripción a la nueva celda
+      nuevaCelda.appendChild(descripcionDiv);
+      nuevaFila.appendChild(nuevaCelda);
+  
+      // Insertar la nueva fila debajo de la fila actual
+      fila.parentNode.insertBefore(nuevaFila, fila.nextSibling);
+    });
+  }
+});
+
 
 </script>
     
