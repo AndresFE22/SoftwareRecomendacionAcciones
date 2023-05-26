@@ -38,17 +38,18 @@ def index():
     return render_template('indexinter.html')
   
   
-@app.route('/actualizarDS')
+@app.route('/actualizarDS', methods=['POST'])
 def newdt():
-  archivo = request.files['archivo_csv']
-  archivo.save('datasetPrediccionprueba.csv')
   
+  archivo = request.files['archivo_input']
+  print(f"Archivo es {archivo}")
+  archivo.save('datasetPrediccionprueba.csv')
   #Actualizar Dataset
   global dataset 
   dataset = pd.read_csv('datasetPrediccionprueba.csv', delimiter=';')
+  msg = "Dataset actualizado con éxito"
   
-  
-  return jsonify('msg')
+  return jsonify({'msg': msg})
 
 
 

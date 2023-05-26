@@ -7,7 +7,10 @@
 
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="/static/EstilosIndex.css">
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -44,65 +47,59 @@
 				</div>
 			</div>		
 					<!-- Angular -->
-				<a href="/"><p>Atras</p></a>
 	
 	
 			</div>
 	<!-- partial -->
 </div>
 
-<!-- Modal-->
-
+<!-- Modal option-->
 	<div id="miModal" class="modal">
 		<div class="modal-contenido">
-		  <span class="cerrar">&times;</span>
-		  <div class="butraining">
-			<div class="buttr1">
-				<div class="upload">
-
-					<a class="act" href="/actualizarDS" type="Submit">Actualizar dataset</a>
-
-				</div>
-
-				<div class="drop">
-
-					<label for="archivos" class="drop-container">
-						<span>
-						<h2>Soltar archivos aquí</h2>
-						</span>
-						<input type="file" id="archivos" name="archivo_csv" accept=".csv" required style="display: none;">
-					</label>
-
-				</div>
-				
-				
-			</div>			
-			<div class="buttr1">
-
-				<div class="titletr">
-
-				<p>
-					Entrenamiento del modelo
-				</p>	
-
-				</div>
-
-				<div class="buttontr">
-					<a href="/showpagetraining">
-						<button>Entrenar modelo</button>
-					</a>
-				</div>
+			<span class="cerrar">&times;</span>
+			<div class="containerdr">
+				<div class="box">
+					<div class="box-headerd">
+						<h2>ACTUALIZAR DATASET</h2>
+					</div>
+					<div class="box-contenta">
+						<form action="/actualizarDS" method="post" enctype="multipart/form-data" id="form">
+						<label for="archivo_input">Seleccionar archivo:</label>
+						<div class="drop-area" id="drop_area">
+							Arrastra y suelta el archivo aquí<br>
+							o haz clic para seleccionarlo
+						</div>
+						<center><div id="mensaje_archivo" style="display: none;">No hay archivos seleccionados.</div>
+						</center>
+						<center>
+							<div id="msg"></div>
+						</center>
+						<input type="file" id="archivo_input" accept=".csv" name="archivo_input">
 	
-				
-				
-			</div>
-			</div>
-			
-		
-		  </div>
-		</div>
-	</div>
+						<div class="btn-container">
+							<button id="btn_actualizar">Actualizar</button>
+						</form>
+						</div>
+					</div>
+				</div>
+            <div class="box">
+                <div class="box-headeri">
+                    <h2>ENTRENAR MODELO</h2>
+                </div>
+                <div class="box-contentt">
+				<center><h3>Entrene el modelo presionando el botón </h3></center>	
+                    <div class="btn-container">
+						<a href="/showpagetraining">
+							<center><button id="btn_entrenar">Entrenar</button></center>   
+						</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+	</div>
 
 
 
@@ -122,7 +119,24 @@
 
 </div>
 
-  
+<script src="https://code.jquery.com/jquery-3.6.4.min.js">
+	$(document).ready(function() {
+        $('#form').submit(function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: 'actualizarDS',
+                type: 'POST',
+                data: $('#form').serialize(),
+                success: function(response) {
+                    $('#msg').text(response);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
 
 <script>
 	// Obtener los elementos necesarios
@@ -149,10 +163,79 @@ window.addEventListener("click", function(event) {
   }
 });
 </script>
+
+<script>
+	const dropArea = document.getElementById("drop_area");
+	const fileInput = document.getElementById("archivo_input");
+
+	// Actualizar el estilo del área de arrastrar y soltar cuando se está arrastrando un archivo
+	dropArea.addEventListener("dragover", (e) => {
+		e.preventDefault();
+		dropArea.classList.add("dragover");
+	});
+
+	// Restaurar el estilo del área de arrastrar y soltar cuando se termina de arrastrar un archivo
+	dropArea.addEventListener("dragleave", () => {
+		dropArea.classList.remove("dragover");
+	});
+
+	// Obtener el archivo seleccionado cuando se suelta en el área de arrastrar y soltar
+	dropArea.addEventListener("drop", (e) => {
+		e.preventDefault();
+		dropArea.classList.remove("dragover");
+		const file = e.dataTransfer.files[0];
+		handleFile(file);
+	});
+
+	// Obtener el archivo seleccionado cuando se selecciona a través del botón de archivo
+	fileInput.addEventListener("change", (e) => {
+		const file = e.target.files[0];
+		handleFile(file);
+	});
+
+	// Función para manejar el archivo seleccionado
+	function handleFile(file) {
+		// Realizar acciones con el archivo seleccionado
+        const fileName = file.name;
+        dropArea.textContent = fileName;
+		console.log("Archivo seleccionado:", fileName);
+	}
+
+	  // Evento click para el área de arrastrar y soltar
+	  dropArea.addEventListener("click", () => {
+		fileInput.click();
+	});
+
+	// Evento change para el input file
+	fileInput.addEventListener("change", (e) => {
+		const file = e.target.files[0];
+		handleFile(file);
+	});
+
+
+</script>
+
+<script>
+    const archivoInput = document.getElementById("archivo_input");
+    const btnActualizar = document.getElementById("btn_actualizar");
+	const mensajearchivo = document.getElementById("mensaje_archivo")
+
+	document.querySelector("form").addEventListener("submit", function(event){
+		if (archivoInput.files.length === 0) {
+			event.preventDefault();
+		}
+	});
+
+    btnActualizar.addEventListener("click", function() {
+		if (archivoInput.files.length === 0) {
+			mensajearchivo.style.display = "block";
+		} else {
+			mensajearchivo.style.display = "none"
+	
+		}
+	});
+	
+</script>
+
 </body>
-
-
-
-
-
 </html>
