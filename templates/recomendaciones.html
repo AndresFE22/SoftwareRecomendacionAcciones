@@ -121,6 +121,36 @@
         .recom h1 {
           color: #007bff;
         }
+
+        .ventana-emergente {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.contenido-ventana {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.boton-descargar {
+  margin-top: 10px;
+}
+
+.boton-cerrar {
+  margin-top: 10px;
+}
+
     </style>
 </head>
 <body>
@@ -136,6 +166,7 @@
       <th>Ver descripción</th>
       <th>Costo</th>
       <th>Dificultad</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -150,10 +181,48 @@
       </td>
       <td>{{ row['Costo'] }}</td>
       <td>{{ row['Dificultad'] }}</td>
+      <td>
+        <button class="boton-escoger" onclick="mostrarVentanaEmergente()">Escoger</button>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+
+<div id="ventana-emergente" class="ventana-emergente">
+  <div class="contenido-ventana">
+    <h2>Datos de la recomendación</h2>
+    <p id="datos-recomendacion"></p>
+    <button class="boton-descargar" onclick="descargarPlan()">Descargar Plan</button>
+    <button class="boton-cerrar" onclick="cerrarVentanaEmergente()">Cerrar</button>
+  </div>
+</div>
+
+
+
+<script>
+  function mostrarVentanaEmergente() {
+  document.getElementById("ventana-emergente").style.display = "block";
+}
+
+function cerrarVentanaEmergente() {
+  document.getElementById("ventana-emergente").style.display = "none";
+}
+
+function descargarPlan() {
+  // Obtener los datos necesarios para generar el archivo PDF
+  var datos = document.getElementById("datos-recomendacion").innerText;
+  
+  // Crear una nueva instancia de jsPDF
+  var doc = new jsPDF();
+
+  // Agregar los datos al documento PDF
+  doc.text(datos, 10, 10); // Aquí puedes personalizar la ubicación y el formato del texto
+
+  // Generar el archivo PDF y descargarlo
+  doc.save("plan.pdf");
+}
+</script>
 
 <script>
 

@@ -20,8 +20,8 @@ body {
 
 .box-form {
   margin: 0 auto;
-  width: 80%;
-  height: 100%;
+  width: auto;
+  height: auto;
   background: #FFFFFF;
   border-radius: 10px;
   overflow: hidden;
@@ -41,6 +41,8 @@ body {
     justify-content: center;
   }
 }
+
+
 .box-form div {
   height: auto;
 }
@@ -84,7 +86,7 @@ body {
 }
 
 .box-form .left .overlay h1 {
-  font-size: 5vmax;
+  font-size: 4vmax;
   line-height: 1;
   font-weight: 900;
   margin-top: 40px;
@@ -339,11 +341,12 @@ label input[type="checkbox"] {
 
 .modal-contenido {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 3% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
   height: auto;
+  top: 0;
 }
 
 .cerrar {
@@ -551,26 +554,30 @@ border: solid 2px #0066cc;
 }
 
 .box {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   background-color: #fff;
   border-radius: 8px;
 }
 
-.box-headerd {
+.box-headerd, .box-headeri {
   text-align: center;
   padding: 20px;
-  background-color: #0091b6a1;
   color: #fff;
+}
+
+.box-headerd {
+  background-color: #0091b6a1;
   border-top-left-radius: 8px;
 }
 
 .box-headeri {
-  text-align: center;
-  padding: 20px;
   background-color: #4800a781;
-  color: #fff;
   border-top-right-radius: 8px;
+}
+
+.box-headerd, .box-headeri {
+  height: 20%; /* Ajusta el valor según tus necesidades */
 }
 
 
@@ -610,15 +617,21 @@ border: solid 2px #0066cc;
 .drop-area {
   position: relative;
   border: 2px dashed #ddd;
-  padding: 80px;
+  padding: 20%;
   text-align: center;
   cursor: pointer;
 }
 
+.drop-area p {
+  font-size: 10pt;
+
+
+}
+
 .drop-area input[type="file"] {
   /* Estilos adicionales */
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   position: absolute;
   top: 0;
   left: 0;
