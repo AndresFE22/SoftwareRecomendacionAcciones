@@ -17,6 +17,7 @@ from sklearn.metrics import r2_score
 from sklearn import preprocessing
 from sklearn.preprocessing import StandardScaler
 from array import array
+import json
 
 #import matplotlib 
 #import matplotlib.pyplot as plt 
@@ -510,9 +511,47 @@ def recom():
 
   print("Heurística:", dff)
 
-  
-  return render_template('recomendaciones.html', dff=dff)
-  
+  preguntas = {
+    'iescuela': '¿Cuál es la principal razón por la que no va a clases?',
+    'trabajar': '¿Se encuentra usted trabajando en la actualidad?',
+    'vision': '¿Cuáles son sus expectativas para este año?',
+    'gastotra': '¿Cuánto gastas en transporte diario a las escuela?',
+    'tiempoce': '¿Cuánto tiempo inviertes en llegar de tu casa a la escuela?',
+    'becaestu': '¿Recibes alguna beca para apoyar tus estudios?',
+    'califrec': 'Tus calificaciones más frecuentes en tus estudios son',
+    'pisocasa': '¿De qué material es el piso de tu casa?',
+    'aguaserv': '¿Cuentas con servicio de agua?',
+    'luzelect': '¿Tienes servicio de luz eléctrica?',
+    'internet': '¿Cuentas con conexión a internet?',
+    'vivencas': '¿Cuántas personas viven en tu casa?',
+    'trabajop': '¿Tus padres trabajan?',
+    'vivescon': '¿Con quién vives? (Puedes elegir más de una opción)',
+    'escojefe': '¿Cuál es la escolaridad máxima del jefe del hogar?',
+    'parenjef': '¿Qué parentesco tienes con el jefe del hogar?',
+    'saludafi': '¿Estás afiliado a una institución de salud?',
+    'estratos': '¿Cuál es tu estrato socioeconómico?'
+}
 
+  for name, preguntas in preguntas.items():
+     if campos == name:
+        campos = preguntas
+        break
+     
+  dffinal = dff.reset_index(drop=True)
+  print("dff final:", dffinal)
 
+  
+  #dff_json = dff.to_json(orient='records') 
+  #valores_json = json.dumps({'campo': campos, 'valor': valor})
+
+  #print("valores:", valores_json)
+  data_json = json.dumps({
+    'dff': dff.to_dict(orient='records'),
+    'valores': {'campo': campos, 'valor': valor}
+})
+
+  print("json:", data_json) 
+  
+  return render_template('recomendaciones.html', dff=dffinal, campo=campos, valor=valor, datos_json=data_json)
+  
 
