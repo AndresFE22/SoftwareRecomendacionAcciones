@@ -13,7 +13,9 @@
     <div class="wrapper">
       <div class="clash-card barbarian">
         <div class="clash-card__image clash-card__image--barbarian">
-          <img src= "/static/images/robotai.png" alt="barbarian" />
+          <img src= "/static/images/robot1.png" id="img-bajo" alt="robot feliz" style="display: none;">
+          <img src= "/static/images/robot2.png" id="img-alto" alt="robot triste" style="display: none;">
+          <img src= "/static/images/robot3.png" id="img-medio" alt="robot con dudas" style="display: none;">
         </div>
         <div class="clash-card__level clash-card__level--barbarian">
           Rango de inasistencia
@@ -26,7 +28,9 @@
 
         <div class="bott">
           <div class="butrecom">
-            <a href="/recomendation" class="btn">Mostrar recomendaciones</a>
+            <a href="/recomendation" style="text-decoration: none;">
+              <button id="btnRecomendaciones" class="btn">Mostrar recomendaciones</button>
+            </a>
           </div>
 
           <div class="butback">
@@ -40,7 +44,32 @@
    
     
   </div> <!-- end container -->
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var rango = "{{ variable }}";
 
+      // Mostrar la imagen correspondiente según el rango
+      if (rango === "Alto") {
+        $("#img-alto").show();
+      } else if (rango === "Medio") {
+        $("#img-medio").show();
+      } else if (rango === "Bajo") {
+        $("#img-bajo").show();
+        inhabilitarBotonRecomendaciones();
+      }
+
+      function inhabilitarBotonRecomendaciones() {
+      // Deshabilitar el botón de recomendaciones
+      $("#btnRecomendaciones").prop("disabled", true);
+      // Deshabilitar el efecto hover
+      $("#btnRecomendaciones").css("background-color", "inherit");
+      $("#btnRecomendaciones").css("cursor", "not-allowed");
+    }
+    });
+  </script>
+  
 
 </body>
 </html>

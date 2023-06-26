@@ -11,6 +11,47 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+    /* Estilos para el modal */
+    .modaltraining {
+      display: none; /* Por defecto, ocultar el modal */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modaltraining-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 200px;
+      text-align: center;
+	  border-radius: 10px;
+
+    }
+
+    /* Estilos para el botón de cerrar */
+    .closetraining {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .closetraining:hover,
+    .closetraining:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -89,9 +130,7 @@
                 <div class="box-contentt">
 				<center><h3>Entrene el modelo presionando el botón </h3></center>	
                     <div class="btn-container">
-						<a href="/showpagetraining">
 							<center><button id="btn_entrenar">Entrenar</button></center>   
-						</a>
                     </div>
                 </div>
             </div>
@@ -118,6 +157,40 @@
 </div>
 
 </div>
+
+<div id="myModaltraining" class="modaltraining">
+	<div class="modaltraining-content">
+	  <span class="closetraining">&times;</span>
+	  <h3>Modelo entrenado correctamente</h3>
+	  <img src="/static/images/check_circle_FILL0_wght400_GRAD0_opsz48.svg" alt="checkmark" width="30">
+	</div>
+  </div>
+
+<script>
+	// Obtener referencias a elementos del DOM
+var modaltr = document.getElementById("myModaltraining");
+var btntr = document.getElementById("btn_entrenar");
+var closeBtn = document.getElementsByClassName("closetraining")[0];
+
+// Función para abrir el modal
+function abrirModal() {
+  modaltr.style.display = "block";
+}
+
+// Función para cerrar el modal
+function cerrarModal() {
+  modaltr.style.display = "none";
+}
+
+// Asociar eventos a los botones
+btntr.addEventListener("click", abrirModal);
+closeBtn.addEventListener("click", cerrarModal);
+window.addEventListener("click", function(event) {
+  if (event.target == modal) {
+    cerrarModal();
+  }
+});
+</script>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js">
 	$(document).ready(function() {

@@ -577,7 +577,8 @@ border: solid 2px #0066cc;
 }
 
 .box-headerd, .box-headeri {
-  height: 20%; /* Ajusta el valor según tus necesidades */
+  height: 20%;
+  width: 345px; /* Ajusta el valor según tus necesidades */
 }
 
 

@@ -86,9 +86,9 @@ text-decoration: none;
 transition : 1000ms;
 padding: 10px 50px;
 transform : translateY(-0px);
-background-color: #fff;
-color: #0066cc;
-border: solid 2px #0066cc;
+background-color: #0079b1;
+color: #ffffff;
+border: solid 2px #00b6e4;
 }
 
 .clash-card__image {
@@ -100,7 +100,7 @@ border: solid 2px #0066cc;
 }
 
 .clash-card__image--barbarian {
-  background: url("/static/images/neural.jpg");
+  background: url("/static/images/dofon.jpg");
   background-size: cover;
   background-position-y: center;
 }
@@ -202,3 +202,8 @@ border: solid 2px #0066cc;
   right: 100px;
   z-index: 999;
 }/*# sourceMappingURL=EstilosResultado.css.map */
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}

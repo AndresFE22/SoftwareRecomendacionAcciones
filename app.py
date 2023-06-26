@@ -80,7 +80,7 @@ def showpagetraining():
                                 max_iter=imaxiter).fit(X_train, y_train)
   
 
-  return render_template('training.html')
+  return ""
 
 @app.route('/showpageprediction')
 def showpageprediction():
